@@ -10,15 +10,15 @@ import PropTypes from 'prop-types';
      ||----w||
      ||     ||
 */
+const uploadsUrl = 'http://media.mw.metropolia.fi/wbma/uploads/'
 
 const ListItem = (props) => {
-  console.log(props.singleMedia)
   return (
     <TouchableOpacity style={styles.row}>
       <View style={styles.imagebox}>
         <Image
           style={styles.image}
-          source={{uri: props.singleMedia.thumbnails.w160}}
+          source={{uri: uploadsUrl + props.singleMedia.thumbnails.w160}}
         />
       </View>
       <View>
