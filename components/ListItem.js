@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
      ||----w||
      ||     ||
 */
-const uploadsUrl = 'http://media.mw.metropolia.fi/wbma/uploads/'
+const uploadsUrl = 'http://media.mw.metropolia.fi/wbma/uploads/';
 
 const ListItem = (props) => {
   return (
@@ -32,11 +32,20 @@ const ListItem = (props) => {
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
-    backgroundColor: 'grey',
+    backgroundColor: '#636363',
     padding: 15,
     marginBottom: 5,
     borderRadius: 16,
     marginHorizontal: 5,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+
+    elevation: 3,
   },
   image: {
     flex: 1,
@@ -44,13 +53,15 @@ const styles = StyleSheet.create({
     width: 100,
   },
   imagebox: {
-    marginRight:5,
+    marginRight: 5,
   },
   textbox: {
     width: 250,
+    color: 'white',
   },
   listTitle: {
     fontWeight: 'bold',
+    color: 'white',
     fontSize: 20,
   },
 });
