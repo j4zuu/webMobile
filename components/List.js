@@ -1,22 +1,25 @@
-/* eslint-disable linebreak-style */
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {FlatList} from 'react-native';
+import {useLoadMedia} from '../hooks/ApiHooks';
 import ListItem from './ListItem';
-import {useLoadMedia} from '../hooks/ApiHooks'
-
-
+import PropTypes from 'prop-types';
 
 const List = ({navigation}) => {
   const mediaArray = useLoadMedia();
+
   return (
     <FlatList
       data={mediaArray}
       keyExtractor={(item, index) => index.toString()}
-      renderItem={({item}) => <ListItem singleMedia={item} />}
+      renderItem={({item}) => (
+        <ListItem navigation={navigation} singleMedia={item} />
+      )}
     />
   );
 };
 
+List.propTypes = {
+  navigation: PropTypes.object,
+};
 
 export default List;
-

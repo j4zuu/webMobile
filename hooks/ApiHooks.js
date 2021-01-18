@@ -1,40 +1,33 @@
-import React, {useEffect, useState} from 'react';
 
-const url =
-  'http://media.mw.metropolia.fi/wbma/';
-const urlEnd = 'media'
+import {useEffect, useState} from 'react';
+import {baseUrl} from '../utils/variables';
 
 const useLoadMedia = () => {
   const [mediaArray, setMediaArray] = useState([]);
 
-  const loadMedia = async (urlEnd, limit = 5) => {
+  const loadMedia = async (limit = 5) => {
     try {
-      const response = await fetch(url + urlEnd + '?limit=' + limit);
-      const json = await response.json();
-      console.log(json);
-
+      const listResponse = await fetch(baseUrl + 'media?limit=' + limit);
+      const listJson = await listResponse.json();
+      console.log('response json data', listJson);
       const media = await Promise.all(
-        json.map(async (item) => {
-          const fileResponse = await fetch(url + urlEnd + '/' + item.file_id)
-          const json = fileResponse.json()
-          console.log(json)
-          return json
+        listJson.map(async (item) => {
+          const fileResponse = await fetch(baseUrl + 'media/' + item.file_id);
+          const fileJson = fileResponse.json();
+          // console.log('media file data', json);
+          return fileJson;
         })
-      )
-      console.log('media array data' + media)
+      );
+      console.log('media array data', media);
 
-      setMediaArray(media)
+      setMediaArray(media);
     } catch (error) {
-      console.error()
+      console.error('loadMedia error', error);
     }
   };
-
-
   useEffect(() => {
-    loadMedia(urlEnd, 5);
-  }, [])
-
-
+    loadMedia(10);
+  }, []);
   return mediaArray;
 };
 
