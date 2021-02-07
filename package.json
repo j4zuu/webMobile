@@ -25,7 +25,10 @@
     "react-native-safe-area-context": "3.1.9",
     "react-native-screens": "~2.15.0",
     "react-native-web": "~0.13.12",
-    "validator": "^13.5.2"
+    "validator": "^13.5.2",
+    "expo-camera": "~9.1.0",
+    "expo-contacts": "~8.6.0",
+    "expo-sensors": "~9.2.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
